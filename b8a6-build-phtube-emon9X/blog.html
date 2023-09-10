@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Hero Tube</title>
+    <link rel="shortcut icon" href="./icons/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'inter';
+        }
+    </style>
+
+</head>
+
+<body class="mx-9 my-5">
+    <h1 class="font-bold text-4xl mb-4 text-green-600">Let's Discuss the Scope of var, let and const</h1>
+    <p class="font-light text-sm mb-5">by Shahariar Rahman</p>
+    <h3 class="font-medium text-3xl mb-3">Scope of var</h3>
+    <p>Scope essentially means where these variables are available for use. <span class="font-medium">Var declarations are globally scoped
+        or function/locally scoped</span>. <br> <br>
+        The scope is global when a var variable is declared outside a function. This means that any variable that is declared with var outside a function block is available for use in the whole window.
+        <br><br>Var is function scoped when it is declared within a function. This means that it is available and can be accessed only within that function.
+        <br><br>
+        To understand further, look at the example below.
+        <br><br>
+<div class="bg-slate-200"><span class="">var greeter = "hey hi";<br><br>
+    
+    function newFunction() {<br>
+        var hello = "hello";<br>
+    }</span></div>
+            <br><br>
+            Here, greeter is globally scoped because it exists outside a function while hello is function scoped. So we cannot access the variable hello outside of a function. So if we do this:
+            <br><br>
+<div class="bg-slate-200">
+    <span>
+        var tester = "hey hi"; <br>
+
+        function newFunction() { <br>
+            var hello = "hello"; <br>
+        } <br>
+        console.log(hello); // error: hello is not defined
+    </span>
+</div>
+            <br><br>
+            We'll get an error which is as a result of hello not being available outside the function.
+
+    </p>
+    <h3 class="font-medium text-3xl mt-5 mb-3">let is block scoped</h3>
+    <p>
+        A block is a chunk of code bounded by {}. A block lives in curly braces. Anything within curly braces is a block. <br><br>
+        So a variable declared in a block with let  is only available for use within that block. Let me explain this with an example:
+        <br><br>
+<div class="bg-slate-200">
+    <span>
+        let greeting = "say Hi"; <br>
+        let times = 4; <br>
+     
+        if (times > 3) { <br>
+             let hello = "say Hello instead"; <br>
+             console.log(hello);// "say Hello instead" <br>
+         } <br>
+        console.log(hello) // hello is not defined
+    </span>
+</div>
+    </p>
+    <h3 class="font-medium text-3xl mt-5 mb-3">const declarations are block scoped</h3>
+    <p>Like let declarations, const declarations can only be accessed within the block they were declared.</p>
+    <p class="font-light text-sm mb-5 mb-8">Source: <a href="https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/#:~:text=var%20declarations%20are%20globally%20scoped%20or%20function%20scoped%20while%20let,be%20updated%20nor%20re%2Ddeclared.">freecodecamp.org</a></p>
+
+    <h3 class="font-bold text-4xl mb-4 text-green-600">Use cases of null and undefined</h3>
+    <p class="font-light text-sm mb-5">by Shahariar Rahman</p>
+    <p class="mt-3">In JavaScript, null and undefined are both special values that indicate the absence of a meaningful value, but they are used in slightly different contexts.</p>
+    <br> <br>
+    <p>1. undefined:
+        <li>undefined represents a variable that has been declared but has not been assigned a value yet.</li>
+        <li>It can also be the default value of function parameters that were not provided.</li>
+        <li>It typically indicates a variable that exists but has no meaningful content.</li>
+    </p> <br> <br>
+    <p>Example 1: <br></p>
+    <div class="bg-slate-200">
+        let variable1; // variable1 is undefined because it hasn't been assigned a value
+<br> console.log(variable1); // Output: undefined <br>
+
+function greet(name) {<br>
+  console.log(`Hello, ${name}!`);<br>
+} <br>
+
+greet(); // Output: Hello, undefined!
+    </div> <br> <br>
+    <p>2. null:
+        <li>null is a deliberate assignment value that represents the absence of any object value or value itself.</li>
+        <li>It is often used to explicitly indicate that a variable or object property should have no value.</li>
+    </p><br> <br>
+    <p>Example 2:</p>
+    <div class="bg-slate-200">
+        let variable2 = null; // variable2 is explicitly set to null <br>
+console.log(variable2); // Output: null <br>
+
+let user = {
+  name: "John", <br>
+  age: null, <br> // age is set to null to indicate unknown or not applicable
+}; <br>
+
+console.log(user.age); // Output: null
+
+    </div>
+    <br> <br>
+    <p>In summary, undefined typically represents the unintentional absence of a value, like a variable that hasn't been assigned, while null is used to intentionally indicate that a variable or property has no value. Understanding the distinction between them is important for writing clean and reliable JavaScript code.</p> <br> <br>
+    <p class="font-medium">Some more use cases</p> <br>
+    <p> Type and typeof: 
+        <li>undefined is a primitive value, and its type is undefined</li>
+        <li>null is also a primitive value, and its type is object. This is a historical quirk in JavaScript, and it's often considered a mistake in the language's design.</li>
+    </p> <br>
+    <div class="bg-slate-200">
+        typeof undefined; // "undefined" <br>
+typeof null;      // "object"
+
+    </div> <br>
+    <p>Checking for Existence:
+        <li>You can use typeof or strict equality (===) to check for the presence of undefined or null.</li>
+    </p> <br>
+    <div class="bg-slate-200">let someVar; <br>
+        if (typeof someVar === "undefined") { <br>
+          console.log("someVar is undefined"); <br>
+        } <br>
+        
+        let anotherVar = null; <br>
+        if (anotherVar === null) { <br>
+        }
+        </div> <br>
+        <p>Default Values:</p>
+        <div class="bg-slate-200">
+            function greet(name) { <br>
+                name = name || "Guest"; // If name is falsy(undefined or null), default to "Guest" <br>
+                console.log(`Hello, ${name}!`);
+              } <br>
+              
+              greet(); // Output: Hello, Guest!
+              
+        </div> <br>
+        <p>Undefined vs. Null in Objects:</p>
+        <li>When you access a non-existent property of an object, it returns undefined. However, if you explicitly set a property to null, it will return null.</li> <br>
+        <div class="bg-slate-200">let person = { <br>
+            name: "John", <br>
+          };<br>
+          
+          console.log(person.age); // Output: undefined <br>
+          
+          person.age = null; <br>
+          console.log(person.age); // Output: null
+          </div> <br>
+          <p>Function Return Values:</p>
+          <li>A function that doesn't return a value implicitly returns undefined.</li> <br>
+          <div class="bg-slate-200">function noReturnValue() {<br>
+            // No return statement 
+            <br>
+          }
+          <br>
+          console.log(noReturnValue()); // Output: undefined
+          </div> <br>
+          <p>Falsy Values:
+            <li>Both null and undefined are falsy values in JavaScript, which means they evaluate to false in a boolean context.</li>
+          </p>
+          <div class="bg-slate-200">
+            if (null) { <br>
+                console.log("This won't be executed"); <br>
+              } <br>
+              
+              if (undefined) { <br>
+                console.log("This won't be executed"); <br>
+              }
+              
+          </div>
+          <p class="font-light text-sm mb-5 mb-8">Source: <a href="https://chat.openai.com/">chatGPT</a></p> <br>
+
+          <h1 class="font-bold text-4xl mb-4 text-green-600">REST API</h1> <br>
+          <p>REST is a set of architectural constraints, not a protocol or a standard. API developers can implement REST in a variety of ways.</p>
+          <br>
+          <p>When a client request is made via a RESTful API, it transfers a representation of the state of the resource to the requester or endpoint. This information, or representation, is delivered in one of several formats via HTTP: JSON (Javascript Object Notation), HTML, XLT, Python, PHP, or plain text. JSON is the most generally popular file format to use because, despite its name, it’s language-agnostic, as well as readable by both humans and machines. </p>
+          <br>
+          <p>Something else to keep in mind: Headers and parameters are also important in the HTTP methods of a RESTful API HTTP request, as they contain important identifier information as to the request's metadata, authorization, uniform resource identifier (URI), caching, cookies, and more. There are request headers and response headers, each with their own HTTP connection information and status codes.</p>
+          <br>
+          <p>In order for an API to be considered RESTful, it has to conform to these criteria:</p>
+          <ul class="list-decimal ml-8">
+            <li>A client-server architecture made up of clients, servers, and resources, with requests managed through HTTP.</li>
+            <li>Stateless client-server communication, meaning no client information is stored between get requests and each request is separate and unconnected.</li>
+            <li>Cacheable data that streamlines client-server interactions.</li>
+            <li>A uniform interface between components so that information is transferred in a standard form. This requires that: <br>
+           <ul class="list-decimal ml-6">
+            <li>resources requested are identifiable and separate from the representations sent to the client.
+            </li>
+            <li>resources can be manipulated by the client via the representation they receive because the representation contains enough information to do so.</li>
+            <li>self-descriptive messages returned to the client have enough information to describe how the client should process it.</li>
+            <li>hypertext/hypermedia is available, meaning that after accessing a resource the client should be able to use hyperlinks to find all other currently available actions they can take.</li>
+           </ul>
+        </li>
+        <li>A layered system that organizes each type of server (those responsible for security, load-balancing, etc.) involved the retrieval of requested information into hierarchies, invisible to the client.</li>
+        <li>Code-on-demand (optional): the ability to send executable code from the server to the client when requested, extending client functionality. </li>
+          </ul>
+          <br>
+          <p>
+            Though the REST API has these criteria to conform to, it is still considered easier to use than a prescribed protocol like SOAP (Simple Object Access Protocol), which has specific requirements like XML messaging, and built-in security and transaction compliance that make it slower and heavier. 
+          </p>
+          <br>
+          <p>
+            In contrast, REST is a set of guidelines that can be implemented as needed, making REST APIs faster and more lightweight, with increased scalablity—perfect for Internet of Things (IoT) and mobile app development. 
+          </p>
+          <p class="font-light text-sm mb-5 mb-8">Source: <a href="https://www.redhat.com/en/topics/api/what-is-a-rest-api">redhat.com</a></p> <br>
+</body>
+
+</html>
