@@ -1,0 +1,23 @@
+in courses component
+const [courses, setCourses] = useState([]); 
+
+data: loaded in courses from json file as an array of objects
+the array elements (object) named course as props, passed to Course component by map method
+passed to App (parent) component by onClick event handler function named handleShowSelectedCourse (parameter:course, argument:course)
+
+in App.jsx component
+data: from course (element of courses) by onClick event handler function named handleShowSelectedCourse
+  const [cartData, setCartData] = useState([]);
+
+
+  const [courseNames, setCourseNames] = useState([]);
+passed to CartCourse component as array
+then to CartCourse component 
+  const [price, setPrice] = useState(0);
+passed CartCourse component as number
+  const [credit, setCredit] = useState(0);
+passed CartCourse component as number
+  const [idList, setIdList] = useState([]);
+used for unique course selection validation
+  const [number, setNumber] = useState(0);
+used for numbering the course name of courseName array component
